@@ -1,0 +1,420 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Your Name | Your Professional Title";
+const description = "Your professional tagline and what you do. Customize this to match your expertise.";
+---
+
+<Layout title={title} description={description}>
+  <main id="main-bg" class="min-h-screen transition-all duration-1000 ease-in-out">
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center">
+      <div class="text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        
+        <!-- Main Title with Typing Effect -->
+        <div class="mb-12">
+          <h1 class="text-6xl sm:text-7xl lg:text-8xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
+            Your Name Here
+          </h1>
+          <div class="text-2xl sm:text-3xl lg:text-4xl text-gray-600 dark:text-gray-300 font-light mb-8">
+            I'm a <span id="typing-text" class="text-blue-600 dark:text-blue-400 font-semibold"></span><span class="animate-pulse text-blue-600 dark:text-blue-400">|</span>
+          </div>
+          
+          <!-- Impact Statement -->
+          <p class="text-xl sm:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-4xl mx-auto">
+            Your compelling professional statement goes here. Highlight your experience, achievements, and what makes you unique.
+          </p>
+
+
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <a href="/resume" class="group relative inline-flex items-center px-12 py-5 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-blue-500/30 transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <span class="relative z-10">View My Experience</span>
+            <svg class="relative z-10 w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+          <a href="/contact" class="group inline-flex items-center px-12 py-5 bg-transparent border-3 border-gray-500 text-gray-300 font-bold text-xl rounded-2xl hover:border-white hover:text-white hover:bg-white/5 transform hover:scale-105 transition-all duration-300">
+            Let's Talk Business
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Showcase -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+          <h2 class="text-5xl font-bold text-gray-900 dark:text-white mb-6">What I Bring to the Table</h2>
+          <p class="text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Technologies and skills that solve real business problems</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10">
+          <!-- Data Engineering -->
+          <div class="group bg-white/20 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/30 dark:border-white/10 hover:border-blue-400/50 hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-500 hover:transform hover:scale-105 relative overflow-hidden shadow-xl">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+            <div class="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-8 group-hover:bg-blue-500/30 transition-colors duration-300">
+              <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Data Engineering</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg leading-relaxed">Build and maintain reliable data pipelines. Design scalable ETL processes, real-time streaming systems, and data models that support analytics and production workloads.</p>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-blue-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Python</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-blue-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Apache Spark</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-blue-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Kafka</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-blue-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Apache NiFi</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-blue-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">PostgreSQL</span>
+            </div>
+          </div>
+
+          <!-- Cloud & DevOps -->
+          <div class="group bg-white/20 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/30 dark:border-white/10 hover:border-purple-400/50 hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-500 hover:transform hover:scale-105 relative overflow-hidden shadow-xl">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-purple-600"></div>
+            <div class="w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center mb-8 group-hover:bg-purple-500/30 transition-colors duration-300">
+              <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Cloud & DevOps</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg leading-relaxed">Develop and automate cloud infrastructure. Use containerization, CI/CD, and infrastructure-as-code to ensure consistency, scalability, and efficient deployments.</p>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-purple-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">GCP</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-purple-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">AWS</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-purple-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Docker</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-purple-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Terraform</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-purple-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Prometheus</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-purple-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Grafana</span>
+            </div>
+          </div>
+
+          <!-- Full-Stack Development -->
+          <div class="group bg-white/20 dark:bg-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/30 dark:border-white/10 hover:border-emerald-400/50 hover:bg-white/30 dark:hover:bg-white/10 transition-all duration-500 hover:transform hover:scale-105 relative overflow-hidden shadow-xl">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-emerald-600"></div>
+            <div class="w-16 h-16 bg-emerald-500/20 rounded-xl flex items-center justify-center mb-8 group-hover:bg-emerald-500/30 transition-colors duration-300">
+              <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Full-Stack Development</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg leading-relaxed">Develop web applications end-to-end. Implement responsive frontends and stable backend services with a focus on clarity, maintainability, and performance.</p>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-emerald-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">React</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-emerald-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Next.js</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-emerald-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Spring Boot</span>
+              <span class="px-4 py-2 bg-white/20 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm rounded-full border border-white/30 dark:border-white/20 hover:border-emerald-400/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors backdrop-blur-sm">Flutter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Preview -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+          <h2 class="text-5xl font-bold text-gray-900 dark:text-white mb-6">Recent Projects</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+          <!-- Project 1 -->
+          <div class="relative group overflow-hidden rounded-xl bg-black/20 backdrop-blur-xl border border-white/10 hover:border-white/20 shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:scale-105 cursor-pointer">
+            <div class="p-8 relative z-10">
+              <!-- Category Badge -->
+              <div class="flex items-center justify-between mb-6">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/90 backdrop-blur-sm border border-white/20">
+                  Data Engineering
+                </span>
+                <a href="/projects/example-project-3" class="text-blue-400 hover:text-blue-300 transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+              
+              <!-- Title & Description -->
+              <h3 class="text-2xl font-semibold text-white mb-4">Example Data Pipeline</h3>
+              <p class="text-white/70 mb-6 line-clamp-3">Automated ETL pipeline processing millions of records daily with real-time monitoring. Replace with your own project.</p>
+              
+              <!-- Read More Button -->
+              <a 
+                href="/projects/example-project-3"
+                class="inline-flex items-center text-sm font-medium text-blue-400 hover:text-blue-300 mb-6 transition-colors group-hover:text-blue-200"
+              >
+                Read more
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+              
+              <!-- Technologies -->
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">Python</span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">Spark</span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">AWS</span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="relative group overflow-hidden rounded-xl bg-black/20 backdrop-blur-xl border border-white/10 hover:border-white/20 shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:scale-105 cursor-pointer" onclick="window.location.href='/projects/example-project-1'">
+            <div class="p-8 relative z-10">
+              <!-- Category Badge -->
+              <div class="flex items-center justify-between mb-6">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/90 backdrop-blur-sm border border-white/20">
+                  Full-Stack Development
+                </span>
+                <a href="/projects/example-project-1" class="text-purple-400 hover:text-purple-300 transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+              
+              <!-- Title & Description -->
+              <h3 class="text-2xl font-semibold text-white mb-4">Example Web Application</h3>
+              <p class="text-white/70 mb-6 line-clamp-3">Modern web application built with React and Node.js featuring real-time updates and user authentication. Customize with your project details.</p>
+              
+              <!-- Read More Button -->
+              <a 
+                href="/projects/example-project-1"
+                class="inline-flex items-center text-sm font-medium text-purple-400 hover:text-purple-300 mb-6 transition-colors group-hover:text-purple-200"
+              >
+                Read more
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+              
+              <!-- Technologies -->
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">React</span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">Node.js</span>
+                <span class="inline-flex items-components px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">MongoDB</span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">WebSockets</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-16">
+          <a href="/projects" class="group inline-flex items-center px-12 py-5 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300">
+            <span>See All Projects</span>
+            <svg class="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-32 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto text-center">
+        <h2 class="text-6xl font-bold text-gray-900 dark:text-white mb-8">Ready to Build Something Amazing?</h2>
+        <p class="text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+          I'm currently open to new opportunities. Let's discuss how I can help solve your data challenges and build systems that scale.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
+          <a href="/contact" class="group relative inline-flex items-center px-16 py-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-2xl rounded-2xl shadow-2xl hover:shadow-blue-500/40 transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <span class="relative z-10">Get In Touch</span>
+            <svg class="relative z-10 w-7 h-7 ml-4 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+          <a href="/resume" class="group inline-flex items-center px-16 py-6 bg-transparent border-3 border-gray-500 text-gray-300 font-bold text-2xl rounded-2xl hover:border-white hover:text-white hover:bg-white/5 transform hover:scale-105 transition-all duration-300">
+            View Resume
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  
+  <Footer />
+
+  <!-- Typing Animation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Typing Animation
+      const titles = [
+        'Software Developer',
+        'Problem Solver', 
+        'Tech Enthusiast',
+        'Lifelong Learner',
+        'Creative Thinker',
+      ];
+
+      let currentTitle = 0;
+      let currentChar = 0;
+      let isDeleting = false;
+      const typingElement = document.getElementById('typing-text');
+      
+      function typeWriter() {
+        const current = titles[currentTitle];
+        
+        if (!typingElement) return;
+        
+        if (isDeleting) {
+          typingElement.textContent = current.substring(0, currentChar - 1);
+          currentChar--;
+        } else {
+          typingElement.textContent = current.substring(0, currentChar + 1);
+          currentChar++;
+        }
+        
+        let speed = isDeleting ? 50 : 150;
+        
+        if (!isDeleting && currentChar === current.length) {
+          speed = 2000; // Pause at end
+          isDeleting = true;
+        } else if (isDeleting && currentChar === 0) {
+          isDeleting = false;
+          currentTitle = (currentTitle + 1) % titles.length;
+          speed = 500; // Pause before next word
+        }
+        
+        setTimeout(typeWriter, speed);
+      }
+      
+      typeWriter();
+    });
+
+    // Background theme handler
+    const mainBg = document.getElementById('main-bg');
+    
+    // Set initial background based on saved theme
+    const savedTheme = localStorage.getItem('backgroundTheme') || '0';
+    const themes = ['space', 'lightGlass', 'darkGlass', 'particles', 'geometric'];
+    const themeName = themes[parseInt(savedTheme)];
+    
+    if (mainBg) {
+      applyBackgroundTheme(themeName);
+    }
+    
+    // Listen for background theme changes
+    window.addEventListener('backgroundThemeChange', function(event) {
+      if (mainBg) {
+        applyBackgroundTheme(event.detail.theme);
+      }
+    });
+    
+    function applyBackgroundTheme(theme) {
+      const backgroundClasses = {
+        space: 'bg-gradient-to-br from-indigo-900 via-purple-900 to-black',
+        lightGlass: 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50',
+        darkGlass: 'bg-gradient-to-br from-slate-800 via-gray-800 to-blue-900',
+        particles: 'bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900',
+        geometric: 'bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700'
+      };
+      
+      // Remove all background classes
+      Object.values(backgroundClasses).forEach(bgClass => {
+        bgClass.split(' ').forEach(cls => mainBg.classList.remove(cls));
+      });
+      
+      // Add the new background class
+      if (backgroundClasses[theme]) {
+        backgroundClasses[theme].split(' ').forEach(cls => mainBg.classList.add(cls));
+      }
+      
+      // Set body theme class for CSS animations
+      document.body.className = `theme-${theme}`;
+    }
+
+    // SIMPLE TEST FUNCTION
+    window.testBackgroundChange = function() {
+      alert('TEST BUTTON CLICKED!');
+      const main = document.getElementById('main-bg');
+      const colors = [
+        'linear-gradient(45deg, #ff0000, #00ff00)', // Red to Green
+        'linear-gradient(45deg, #0000ff, #ffff00)', // Blue to Yellow  
+        'linear-gradient(45deg, #ff00ff, #00ffff)', // Magenta to Cyan
+        'linear-gradient(45deg, #000000, #ffffff)', // Black to White
+        'radial-gradient(circle, #1e1b4b, #000000)'  // Deep Space
+      ];
+      
+      if (main) {
+        // Remove ALL existing classes that might interfere
+        main.className = 'min-h-screen transition-all duration-1000 ease-in-out';
+        
+        // Try multiple ways to apply the background
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Method 1: CSS Text with !important
+        main.style.cssText = `background: ${randomColor} !important; min-height: 100vh; transition: all 1s ease-in-out;`;
+        
+        // Method 2: Direct property setting
+        main.style.setProperty('background', randomColor, 'important');
+        
+        // Method 3: Also try on body
+        document.body.style.setProperty('background', randomColor, 'important');
+        
+        console.log('Applied test background:', randomColor);
+        console.log('Main element classes:', main.className);
+        console.log('Main element style:', main.style.cssText);
+        
+        alert('Background should have changed to: ' + randomColor);
+      } else {
+        alert('Could not find main element!');
+      }
+    }
+
+    // NAVBAR BACKGROUND SWITCHER - MOVED HERE SO IT WORKS
+    let currentBgTheme = 0;
+    const backgrounds = [
+      'radial-gradient(ellipse at top, #1e1b4b 0%, #312e81 25%, #1e1b4b 50%, #0f0f23 75%, #000000 100%)', // Deep Space
+      'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #94a3b8 75%, #64748b 100%)', // Light Glass
+      'linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #64748b 75%, #94a3b8 100%)', // Dark Glass
+      'radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%)', // Particles
+      'linear-gradient(45deg, #667eea 0%, #764ba2 100%)' // Geometric
+    ];
+
+    window.switchBackground = function() {
+      console.log('Switch background called!');
+      alert('Background switching! Theme: ' + currentBgTheme);
+      
+      // Find main element
+      const main = document.querySelector('main') || document.getElementById('main-bg');
+      
+      if (main) {
+        // Remove ALL existing classes that might interfere (same as working test button)
+        main.className = 'min-h-screen transition-all duration-1000 ease-in-out';
+        
+        // Apply background using the SAME method as the working test button
+        const bgColor = backgrounds[currentBgTheme];
+        
+        // Method 1: CSS Text with !important
+        main.style.cssText = `background: ${bgColor} !important; min-height: 100vh; transition: all 1s ease-in-out;`;
+        
+        // Method 2: Direct property setting
+        main.style.setProperty('background', bgColor, 'important');
+        
+        // Method 3: Also try on body as backup
+        document.body.style.setProperty('background', bgColor, 'important');
+        
+        console.log('Applied background:', bgColor);
+        console.log('Main element classes:', main.className);
+        console.log('Main element style:', main.style.cssText);
+        
+        alert('Applied theme: ' + ['Deep Space', 'Light Glass', 'Dark Glass', 'Particles', 'Geometric'][currentBgTheme]);
+      } else {
+        alert('Could not find main element!');
+      }
+      
+      // Cycle to next theme
+      currentBgTheme = (currentBgTheme + 1) % backgrounds.length;
+      
+      console.log('Next theme will be:', currentBgTheme);
+    }
+  </script>
+</Layout>

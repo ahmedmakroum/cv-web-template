@@ -1,0 +1,105 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  publishTime?: string;
+  readTime: string;
+  tags: string[];
+  slug: string;
+  image?: string;
+  featured?: boolean;
+}
+
+const { title, description, publishDate, publishTime, readTime, tags, slug, image, featured = false } = Astro.props;
+const formattedDate = publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+const displayTime = publishTime ? ` at ${publishTime}` : '';
+---
+
+<a
+  href={`/blog/${slug}`}
+  class={
+    `relative group block overflow-hidden rounded-xl bg-black/20 backdrop-blur-xl border border-white/10 hover:border-white/20 shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer ${
+      featured ? 'p-8' : ''
+    }`
+  }
+  data-aos="fade-up"
+>
+  {featured ? (
+    <div class="flex flex-col lg:flex-row">
+      {image && (
+        <div class="aspect-video w-full lg:w-1/3 overflow-hidden rounded-t-xl">
+          <img
+            src={image}
+            alt={title}
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+      )}
+      <div class="p-6 w-full lg:w-2/3">
+        <!-- Meta Information -->
+        <div class="flex items-center text-sm text-white/60 mb-3">
+          <time datetime={publishDate.toISOString()}>{formattedDate}{displayTime}</time>
+          <span class="mx-2">•</span>
+          <span>{readTime}</span>
+        </div>
+        <!-- Title & Description -->
+        <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
+          {title}
+        </h2>
+        <p class="text-white/70 mb-4 line-clamp-3">
+          {description}
+        </p>
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  ) : (
+    <>  {/* default layout */}
+      {image && (
+        <div class="aspect-video w-full overflow-hidden rounded-t-xl">
+          <img
+            src={image}
+            alt={title}
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+      )}
+      <div class="p-6">
+        <!-- Meta Information -->
+        <div class="flex items-center text-sm text-white/60 mb-3">
+          <time datetime={publishDate.toISOString()}>{formattedDate}{displayTime}</time>
+          <span class="mx-2">•</span>
+          <span>{readTime}</span>
+        </div>
+        <!-- Title & Description -->
+        <h2 class="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
+          {title}
+        </h2>
+        <p class="text-white/70 mb-4 line-clamp-3">
+          {description}
+        </p>
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-white/10 text-white/80 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </>
+  )}
+</a>

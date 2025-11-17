@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// SEO metadata
+const title = "Resume - Your Name";
+const description = "Your Name - Professional resume showcasing experience, skills, and qualifications.";
+---
+
+<Layout title={title} description={description}>
+  <main id="main-bg" class="min-h-screen transition-all duration-1000 ease-in-out">
+    <!-- Header Section -->
+    <section class="pt-32 pb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center" data-aos="fade-up">
+          <h1 class="text-5xl sm:text-6xl font-bold text-white mb-6">
+            Resume
+          </h1>
+          <p class="text-xl text-white/80 max-w-3xl mx-auto mb-8">
+            Professional experience and qualifications
+          </p>
+          
+          <!-- Download PDF Button -->
+          <a 
+            href="/your-resume.pdf"
+            download
+            class="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+            aria-label="Download resume as PDF"
+          >
+            <svg class="w-6 h-6 mr-3 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Download PDF Resume
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Content Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="relative overflow-hidden rounded-3xl bg-black/20 backdrop-blur-xl border border-white/10 shadow-2xl p-8 lg:p-12" data-aos="fade-up">
+          <!-- Resume Content -->
+          <article class="resume-content">
+            
+            <!-- Header/Contact -->
+            <div class="text-center mb-12 pb-8 border-b-2 border-blue-500/50">
+              <h1 class="text-4xl font-bold text-white mb-4">Your Full Name</h1>
+              <div class="flex flex-wrap justify-center gap-4 text-sm text-white/70">
+                <span>Your City, Your Country</span>
+                <span class="hidden sm:inline">|</span>
+                <a href="mailto:your.email@example.com" class="hover:text-blue-400 transition-colors">your.email@example.com</a>
+                <span class="hidden sm:inline">|</span>
+                <a href="tel:+1234567890" class="hover:text-blue-400 transition-colors">+1 (234) 567-890</a>
+                <span class="hidden sm:inline">|</span>
+                <a href="https://yourwebsite.com/" class="hover:text-blue-400 transition-colors">yourwebsite.com</a>
+                <span class="hidden sm:inline">|</span>
+                <a href="https://www.linkedin.com/in/yourprofile/" class="hover:text-blue-400 transition-colors">/in/yourprofile</a>
+                <span class="hidden sm:inline">|</span>
+                <a href="https://github.com/yourusername" class="hover:text-blue-400 transition-colors">github.com/yourusername</a>
+              </div>
+            </div>
+
+            <!-- Profile -->
+            <section class="mb-8">
+              <h2 class="section-title text-white">Profile</h2>
+              <p class="text-white/80 leading-relaxed">
+                Write a compelling professional summary here. Describe your expertise, key skills, and what you bring to the table. Keep it concise but impactful.
+              </p>
+            </section>
+
+            <!-- Experience -->
+            <section class="mb-8">
+              <h2 class="section-title">Experience</h2>
+
+              <!-- Example Role 1 -->
+              <div class="experience-entry">
+                <div class="experience-header">
+                  <div>
+                    <h3 class="font-semibold text-gray-900 dark:text-gray-100">Job Title</h3>
+                    <p class="text-primary-600 dark:text-primary-400 font-medium">Company Name</p>
+                  </div>
+                  <div class="text-right text-sm text-gray-600 dark:text-gray-400">
+                    Month Year – Present
+                  </div>
+                </div>
+                <ul class="experience-highlights">
+                  <li>Achievement or responsibility demonstrating impact and skills.</li>
+                  <li>Quantifiable result showing value delivered to the organization.</li>
+                  <li>Technical accomplishment or process improvement implemented.</li>
+                </ul>
+              </div>
+
+              <!-- Example Role 2 -->
+              <div class="experience-entry">
+                <div class="experience-header">
+                  <div>
+                    <h3 class="font-semibold text-gray-900 dark:text-gray-100">Previous Job Title</h3>
+                    <p class="text-primary-600 dark:text-primary-400 font-medium">Previous Company</p>
+                  </div>
+                  <div class="text-right text-sm text-gray-600 dark:text-gray-400">
+                    Month Year – Month Year
+                  </div>
+                </div>
+                <ul class="experience-highlights">
+                  <li>Key accomplishment with measurable results.</li>
+                  <li>Technical project or initiative you led or contributed to.</li>
+                  <li>Process improvement or innovation you introduced.</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Education -->
+            <section class="mb-8">
+              <h2 class="section-title">Education</h2>
+              <div class="experience-entry">
+                <div class="experience-header">
+                  <div>
+                    <h3 class="font-semibold text-gray-900 dark:text-gray-100">Degree Name</h3>
+                    <p class="text-primary-600 dark:text-primary-400 font-medium">University or Institution Name</p>
+                  </div>
+                  <div class="text-right text-sm text-gray-600 dark:text-gray-400">
+                    Month Year – Month Year
+                  </div>
+                </div>
+                <ul class="experience-highlights">
+                  <li>Major, Minor, or Specialization</li>
+                  <li>Relevant coursework, honors, or achievements (optional)</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="mb-8">
+              <h2 class="section-title">Skills</h2>
+              <div class="space-y-4">
+                <div>
+                  <span class="font-semibold text-gray-900 dark:text-gray-100">Category 1:</span>
+                  <span class="text-gray-700 dark:text-gray-300 ml-2">Skill 1, Skill 2, Skill 3 • Tool A, Tool B, Tool C</span>
+                </div>
+                <div>
+                  <span class="font-semibold text-gray-900 dark:text-gray-100">Category 2:</span>
+                  <span class="text-gray-700 dark:text-gray-300 ml-2">Technology 1, Technology 2 • Framework A, Framework B • Platform X, Platform Y</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Last Updated -->
+            <div class="text-center mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+              <p class="text-sm text-gray-500 dark:text-gray-400 italic">Last updated in September 2025</p>
+            </div>
+
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Custom resume styling */
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 pb-2 border-b border-primary-500;
+  }
+
+  .experience-entry {
+    @apply mb-6 pb-6 border-b border-gray-200 dark:border-gray-700 last:border-b-0;
+  }
+
+  .experience-header {
+    @apply flex justify-between items-start mb-3 flex-col sm:flex-row gap-2 sm:gap-0;
+  }
+
+  .experience-highlights {
+    @apply list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 leading-relaxed;
+  }
+
+  .experience-highlights li {
+    @apply pl-2;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .experience-header {
+      @apply flex-col items-start gap-1;
+    }
+    
+    .experience-header > div:last-child {
+      @apply text-left;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .section-title {
+      @apply text-black border-gray-400;
+    }
+    
+    .experience-entry {
+      @apply border-gray-400;
+    }
+    
+    h3, .font-semibold {
+      @apply text-black;
+    }
+    
+    .text-primary-600, .text-primary-400 {
+      @apply text-gray-800;
+    }
+  }
+</style>

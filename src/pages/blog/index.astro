@@ -1,0 +1,148 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+---
+
+  <Layout 
+  title="Blog | Your Name - Professional Title"
+  description="Insights and tutorials on software engineering, data engineering, and web development."
+>
+  <main id="main-bg" class="min-h-screen transition-all duration-1000 ease-in-out">
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16">
+      <div class="relative text-center" data-aos="fade-up">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+          Blog
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+          Insights and tutorials on data engineering, web development, and the intersection of technology and user experience. 
+          Practical guides for building better software.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Post -->
+  {sortedPosts.length > 0 && (
+    <section class="section-padding">
+  <div class="max-w-7xl mx-auto" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Latest Post</h2>
+        <BlogCard
+          title={sortedPosts[0].data.title}
+          description={sortedPosts[0].data.description}
+          publishDate={sortedPosts[0].data.publishDate}
+          publishTime={sortedPosts[0].data.publishTime}
+          readTime={sortedPosts[0].data.readTime}
+          tags={sortedPosts[0].data.tags}
+          slug={sortedPosts[0].slug}
+          image={sortedPosts[0].data.image}
+          featured
+        />
+      </div>
+    </section>
+  )}
+  
+  <!-- All Posts -->
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12" data-aos="fade-up">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          All Posts
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+          {sortedPosts.length} {sortedPosts.length === 1 ? 'article' : 'articles'} and counting...
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedPosts.map((post, index) => (
+          <BlogCard 
+            title={post.data.title}
+            description={post.data.description}
+            publishDate={post.data.publishDate}
+            publishTime={post.data.publishTime}
+            readTime={post.data.readTime}
+            tags={post.data.tags}
+            slug={post.slug}
+            image={post.data.image}
+          />
+        ))}
+      </div>
+      
+      {sortedPosts.length === 0 && (
+        <div class="text-center py-12" data-aos="fade-up">
+          <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+            More Content Coming Soon
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+            I'm working on new blog posts about data engineering, web development, and technology insights. 
+            Check back soon for fresh content!
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+  
+  <!-- Newsletter Signup -->
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+      <div class="relative overflow-hidden rounded-xl bg-black/20 backdrop-blur-xl border border-white/10 hover:border-white/20 shadow-2xl transition-all duration-300 p-8">
+        <h2 class="text-3xl font-bold mb-4 text-white">Stay Updated</h2>
+        <p class="text-xl mb-6 text-white/70">
+          Get notified when I publish new articles about data engineering, web development, and technology insights.
+        </p>
+        <form 
+          id="newsletter-form"
+          action="#" 
+          method="POST"
+          class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
+        >
+          <!-- Subscription disabled in template. Replace with your service (Mailchimp, Web3Forms, FormSubmit, etc.) -->
+          <input type="hidden" name="note" value="subscription-disabled">
+          <input 
+            type="email" 
+            name="email"
+            placeholder="Enter your email"
+            required
+            class="flex-1 px-4 py-3 rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-300"
+          />
+          <button 
+            type="submit"
+            class="px-6 py-3 bg-white/20 hover:bg-white/30 border border-white/30 hover:border-white/50 text-white font-medium rounded-lg backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-white/20 hover:scale-105"
+          >
+            Subscribe
+          </button>
+        </form>
+        <p id="form-message" class="text-sm text-white/60 mt-4">
+          No spam, unsubscribe at any time.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    // Subscription is disabled in the template by default.
+    // This client-side handler simply shows a friendly message and prevents any external calls.
+    const form = document.getElementById('newsletter-form');
+    const message = document.getElementById('form-message');
+
+    if (form && message) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const emailInput = form.querySelector('input[type="email"]');
+        if (emailInput) (emailInput as HTMLInputElement).value = '';
+        message.textContent = '✓ Subscription feature is disabled in this template. Replace the form action with your newsletter provider to enable subscriptions.';
+        message.className = 'text-sm text-green-400 mt-4';
+      });
+    }
+  </script>
+  
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,489 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+// Get filter and search parameters from URL
+const url = Astro.url;
+const filter = url.searchParams.get('filter') || 'all';
+const searchTerm = url.searchParams.get('search') || '';
+
+// Get all projects
+const allProjects = (await getCollection('projects')).filter(project => {
+  // Only show projects with required fields and not placeholders
+  const unwantedTitles = [
+    'Real-time Analytics Platform',
+    'ETL Pipeline Orchestrator',
+    'Data Lake Architecture',
+    'Machine Learning Pipeline',
+    'Developer Portfolio'
+  ];
+  return project.data.title && !unwantedTitles.includes(project.data.title);
+});
+
+// Filter projects based on URL parameters
+let filteredProjects = allProjects;
+
+// Apply category filter
+if (filter !== 'all') {
+  filteredProjects = filteredProjects.filter(project => {
+    const categories = project.data.categories || [];
+    const technologies = project.data.technologies || [];
+    
+    // Function to determine project category (same as in ProjectCard)
+    function determineProjectCategory(categories: string[] = [], technologies: string[] = []) {
+      const allCategories = categories.join(' ').toLowerCase();
+      const allTechnologies = technologies.join(' ').toLowerCase();
+      
+      if (allCategories.includes('data engineering') || 
+          allCategories.includes('business intelligence') ||
+          allTechnologies.includes('nifi') ||
+          allTechnologies.includes('spark') ||
+          allTechnologies.includes('kafka') ||
+          allTechnologies.includes('metabase') ||
+          allTechnologies.includes('airflow') ||
+          allTechnologies.includes('postgresql')) {
+        return 'data-engineering';
+      }
+      
+      if (allCategories.includes('mobile') ||
+          allTechnologies.includes('flutter') ||
+          allTechnologies.includes('dart') ||
+          allTechnologies.includes('react native')) {
+        return 'mobile';
+      }
+      
+      if (allCategories.includes('full stack') ||
+          allTechnologies.includes('spring boot') ||
+          (allTechnologies.includes('react') && allTechnologies.includes('node')) ||
+          (allTechnologies.includes('next.js') && allTechnologies.includes('api'))) {
+        return 'fullstack';
+      }
+      
+      if (allCategories.includes('web development') ||
+          allTechnologies.includes('react') ||
+          allTechnologies.includes('next.js') ||
+          allTechnologies.includes('vue') ||
+          allTechnologies.includes('angular') ||
+          allTechnologies.includes('thymeleaf')) {
+        return 'web';
+      }
+      
+      if (allCategories.includes('machine learning') ||
+          allCategories.includes('artificial intelligence') ||
+          allTechnologies.includes('tensorflow') ||
+          allTechnologies.includes('pytorch') ||
+          allTechnologies.includes('opencv')) {
+        return 'ai';
+      }
+      
+      return 'other';
+    }
+    
+    const projectCategory = determineProjectCategory(categories, technologies);
+    return projectCategory === filter;
+  });
+}
+
+// Apply search filter
+if (searchTerm) {
+  filteredProjects = filteredProjects.filter(project => {
+    const title = project.data.title.toLowerCase();
+    const description = project.data.description.toLowerCase();
+    const technologies = (project.data.technologies || []).join(' ').toLowerCase();
+    const categories = (project.data.categories || []).join(' ').toLowerCase();
+    const search = searchTerm.toLowerCase();
+    
+    return title.includes(search) ||
+           description.includes(search) ||
+           technologies.includes(search) ||
+           categories.includes(search);
+  });
+}
+---
+
+<Layout 
+  title="Projects | Your Name - Your Professional Title"
+  description="Browse my portfolio of projects showcasing my skills and experience."
+>
+  <main id="main-bg" class="min-h-screen transition-all duration-1000 ease-in-out">
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative text-center" data-aos="fade-up">
+        <div class="relative z-10">
+          <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+            My Projects
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
+            A collection of my work spanning data engineering and web development. 
+            Each project represents a unique challenge solved with modern technologies 
+            and best practices.
+          </p>
+          <!-- Filter Buttons -->
+          <div class="flex flex-wrap justify-center gap-3 mb-6">
+            <button 
+              data-filter="all"
+              class={`filter-btn px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm backdrop-blur-sm ${
+                filter === 'all' 
+                  ? 'bg-white/20 text-white border border-white/30 shadow-lg' 
+                  : 'bg-white/10 text-white/80 border border-white/20 hover:bg-white/20 hover:text-white'
+              }`}
+            >
+              All Projects
+            </button>
+            <button 
+              data-filter="data-engineering"
+              class={`filter-btn px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm backdrop-blur-sm ${
+                filter === 'data-engineering' 
+                  ? 'bg-blue-500/30 text-blue-200 border border-blue-400/50 shadow-lg shadow-blue-500/20' 
+                  : 'bg-blue-500/10 text-blue-300 border border-blue-400/30 hover:bg-blue-500/20'
+              }`}
+            >
+              Data Engineering
+            </button>
+            <button 
+              data-filter="web"
+              class={`filter-btn px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm backdrop-blur-sm ${
+                filter === 'web' 
+                  ? 'bg-emerald-500/30 text-emerald-200 border border-emerald-400/50 shadow-lg shadow-emerald-500/20' 
+                  : 'bg-emerald-500/10 text-emerald-300 border border-emerald-400/30 hover:bg-emerald-500/20'
+              }`}
+            >
+              Web Development
+            </button>
+            <button 
+              data-filter="mobile"
+              class={`filter-btn px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm backdrop-blur-sm ${
+                filter === 'mobile' 
+                  ? 'bg-green-500/30 text-green-200 border border-green-400/50 shadow-lg shadow-green-500/20' 
+                  : 'bg-green-500/10 text-green-300 border border-green-400/30 hover:bg-green-500/20'
+              }`}
+            >
+              Mobile
+            </button>
+          </div>
+          
+          <!-- Search Bar -->
+          <div class="max-w-md mx-auto mb-6">
+            <div class="relative">
+              <input 
+                type="text" 
+                id="search-input"
+                placeholder="Search by project name, technology, or description..."
+                class="w-full px-4 py-3 pl-12 pr-12 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 shadow-lg"
+              />
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+              <button 
+                id="clear-search"
+                class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors hidden"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Data Engineering Projects -->
+  <!-- All Projects Grid -->
+    
+  <!-- Projects Grid -->
+  <section class="section-padding" id="all-projects">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12" data-aos="fade-up">
+        <h2 id="projects-title" class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          All Projects
+        </h2>
+        <p id="projects-count" class="text-lg text-gray-600 dark:text-gray-400">
+          Showing {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 project-grid" id="project-grid">
+        {filteredProjects.map((project) => (
+          <ProjectCard 
+            title={project.data.title}
+            description={project.data.description}
+            technologies={project.data.technologies ?? []}
+            githubUrl={project.data.githubUrl}
+            liveUrl={project.data.liveUrl}
+            imageUrl={project.data.image}
+            category={project.data.category ?? 'web'}
+            categories={project.data.categories ?? []}
+            readTime={project.data.readTime}
+            slug={project.slug}
+          />
+        ))}
+      </div>
+      
+      <!-- No Results Message -->
+      <div id="no-results" class="text-center py-12 hidden">
+        <div class="text-gray-400 dark:text-gray-500">
+          <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.137 0-4.146-.832-5.657-2.343m0 0A7.962 7.962 0 014 12c0-2.137.832-4.146 2.343-5.657m0 0A7.962 7.962 0 0112 4c2.137 0 4.146.832 5.657 2.343m0 0A7.962 7.962 0 0120 12c0 2.137-.832 4.146-2.343 5.657"></path>
+          </svg>
+          <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">No projects found</h3>
+          <p class="text-gray-600 dark:text-gray-400">Try adjusting your filters or search terms.</p>
+        </div>
+.      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+    
+  <!-- Call to Action -->
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+      <div class="relative overflow-hidden rounded-xl bg-black/20 backdrop-blur-xl border border-white/10 hover:border-white/20 shadow-2xl transition-all duration-300 p-8">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          Interested in Working Together?
+        </h2>
+        <p class="text-xl text-white/70 mb-8">
+          I'm always excited to take on new challenges and collaborate on innovative projects. 
+          Let's discuss how we can bring your ideas to life.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="bg-white/20 hover:bg-white/30 border border-white/30 hover:border-white/50 text-white font-medium py-3 px-6 rounded-lg backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-white/20 hover:scale-105">
+            Start a Conversation
+          </a>
+          <a href="/blog" class="bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 text-white/90 hover:text-white font-medium py-3 px-6 rounded-lg backdrop-blur-sm transition-all duration-300 hover:scale-105">
+            Read My Blog
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  let currentFilter = 'all';
+  let currentSearchTerm = '';
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const clearButton = document.getElementById('clear-search');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    // Set initial active filter button
+    const urlParams = new URLSearchParams(window.location.search);
+    currentFilter = urlParams.get('filter') || 'all';
+    updateActiveButton(currentFilter);
+    
+    // Search input event listener
+    searchInput.addEventListener('input', function(e) {
+      currentSearchTerm = e.target.value.toLowerCase();
+      
+      // Show/hide clear button
+      if (currentSearchTerm) {
+        clearButton.classList.remove('hidden');
+      } else {
+        clearButton.classList.add('hidden');
+      }
+      
+      // Apply filters with animation
+      applyFilters();
+    });
+    
+    // Clear search button
+    clearButton.addEventListener('click', function() {
+      searchInput.value = '';
+      currentSearchTerm = '';
+      clearButton.classList.add('hidden');
+      applyFilters();
+    });
+    
+    // Filter button event listeners
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        currentFilter = this.getAttribute('data-filter');
+        updateActiveButton(currentFilter);
+        applyFilters();
+        
+        // Update URL without page reload
+        const newUrl = currentFilter === 'all' ? '/projects' : `/projects?filter=${currentFilter}`;
+        window.history.pushState({}, '', newUrl);
+      });
+    });
+    
+    // Initial filter application
+    applyFilters();
+  });
+  
+  function updateActiveButton(activeFilter) {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    filterButtons.forEach(button => {
+      const filter = button.getAttribute('data-filter');
+      
+      // Remove active classes
+      button.classList.remove('bg-primary-600', 'text-white', 'shadow-lg', 'active');
+      button.classList.add('bg-white', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300', 'border', 'border-gray-200', 'dark:border-gray-700');
+      
+      // Add active classes to current filter
+      if (filter === activeFilter) {
+        button.classList.remove('bg-white', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300', 'border', 'border-gray-200', 'dark:border-gray-700');
+        button.classList.add('bg-primary-600', 'text-white', 'shadow-lg', 'active');
+      }
+    });
+  }
+  
+  function applyFilters() {
+    const projectGrid = document.getElementById('project-grid');
+    const noResults = document.getElementById('no-results');
+    const projectsTitle = document.getElementById('projects-title');
+    const projectsCount = document.getElementById('projects-count');
+    
+    if (!projectGrid) return;
+    
+    const projects = Array.from(projectGrid.children);
+    let visibleCount = 0;
+    
+    projects.forEach((project, index) => {
+      if (!(project instanceof HTMLElement)) return;
+      
+      // Get project data
+      const title = project.querySelector('h3')?.textContent?.toLowerCase() || '';
+      const description = project.querySelector('p')?.textContent?.toLowerCase() || '';
+      const technologies = Array.from(project.querySelectorAll('.bg-gray-100, .dark\\:bg-gray-700'))
+        .map(el => el.textContent?.toLowerCase() || '').join(' ');
+      const categories = project.getAttribute('data-categories')?.toLowerCase() || '';
+      
+      // Check category filter using the project's data-category attribute
+      let matchesCategory = false;
+      if (currentFilter === 'all') {
+        matchesCategory = true;
+      } else {
+        // The data-category attribute is on the project card itself
+        const projectCategory = project.getAttribute('data-category');
+        matchesCategory = projectCategory === currentFilter;
+      }
+      
+      // Check search filter
+      const matchesSearch = !currentSearchTerm || 
+        title.includes(currentSearchTerm) ||
+        description.includes(currentSearchTerm) ||
+        technologies.includes(currentSearchTerm) ||
+        categories.includes(currentSearchTerm);
+      
+      // Show/hide project with animation
+      if (matchesCategory && matchesSearch) {
+        project.style.display = '';
+        project.style.opacity = '0';
+        project.style.transform = 'scale(0.9)';
+        
+        // Animate in with delay for staggered effect
+        setTimeout(() => {
+          project.style.transition = 'all 0.3s ease-out';
+          project.style.opacity = '1';
+          project.style.transform = 'scale(1)';
+        }, index * 50);
+        
+        visibleCount++;
+      } else {
+        project.style.transition = 'all 0.2s ease-out';
+        project.style.opacity = '0';
+        project.style.transform = 'scale(0.9)';
+        
+        setTimeout(() => {
+          project.style.display = 'none';
+        }, 200);
+      }
+    });
+    
+    // Update title and count
+    updateProjectsDisplay(visibleCount);
+    
+    // Show/hide no results message
+    if (visibleCount === 0) {
+      noResults.classList.remove('hidden');
+      noResults.style.opacity = '0';
+      setTimeout(() => {
+        noResults.style.transition = 'opacity 0.3s ease-out';
+        noResults.style.opacity = '1';
+      }, 100);
+    } else {
+      noResults.style.opacity = '0';
+      setTimeout(() => {
+        noResults.classList.add('hidden');
+      }, 300);
+    }
+  }
+  
+  function updateProjectsDisplay(count) {
+    const projectsTitle = document.getElementById('projects-title');
+    const projectsCount = document.getElementById('projects-count');
+    
+    // Update title
+    let titleText = 'All Projects';
+    if (currentFilter === 'data-engineering') {
+      titleText = 'Data Engineering Projects';
+    } else if (currentFilter === 'web') {
+      titleText = 'Web Development Projects';
+    } else if (currentFilter === 'mobile') {
+      titleText = 'Mobile Development Projects';
+    } else if (currentFilter === 'ai') {
+      titleText = 'AI & Machine Learning Projects';
+    } else if (currentFilter === 'other') {
+      titleText = 'Other Projects';
+    }
+    
+    if (currentSearchTerm) {
+      titleText += ` - Results for "${currentSearchTerm}"`;
+    }
+    
+    projectsTitle.textContent = titleText;
+    
+    // Update count
+    if (count === 0) {
+      projectsCount.textContent = 'No projects found matching your criteria.';
+    } else {
+      projectsCount.textContent = `Showing ${count} project${count !== 1 ? 's' : ''}.`;
+    }
+  }
+</script>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+  
+  .project-card-enter {
+    animation: fadeInUp 0.3s ease-out;
+  }
+  
+  .project-card-exit {
+    animation: fadeOut 0.2s ease-out;
+  }
+</style>

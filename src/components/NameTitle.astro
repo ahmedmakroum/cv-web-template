@@ -1,0 +1,92 @@
+---
+---
+<div class="group cursor-pointer select-text w-full -mt-16">
+  <h1 class="text-7xl sm:text-9xl md:text-[12rem] font-extrabold mb-8 text-left leading-tight" style="color: #0ea5e9;">
+    <div id="first-line"><span id="first-name-text"></span><span id="first-name-cursor" class="cursor">|</span></div>
+    <div id="second-line" class="whitespace-nowrap" style="opacity: 0;"><span id="last-name-text"></span><span id="last-name-cursor" class="cursor">|</span></div>
+  </h1>
+  <p class="text-2xl sm:text-3xl md:text-4xl text-gray-400 mb-10 font-light tracking-wide text-left" id="subtitle-text" style="opacity: 0;">
+    Your Professional Title
+  </p>
+  
+  <style>
+    .cursor {
+      color: #6b7280;
+      animation: blink 1.5s infinite;
+      font-weight: normal;
+      font-size: 1em;
+      display: inline;
+      vertical-align: baseline;
+    }
+    
+    html.dark .cursor {
+      color: #9ca3af;
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    @keyframes slideInUp {
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const firstNameText = document.getElementById('first-name-text');
+      const firstNameCursor = document.getElementById('first-name-cursor');
+      const secondLine = document.getElementById('second-line');
+      const lastNameText = document.getElementById('last-name-text');
+      const lastNameCursor = document.getElementById('last-name-cursor');
+      const subtitle = document.getElementById('subtitle-text');
+      
+      // Step 1: Type first name
+      const firstName = 'Your';
+      let i = 0;
+      
+      function typeFirstName() {
+        if (i < firstName.length) {
+          firstNameText.textContent += firstName.charAt(i);
+          i++;
+          setTimeout(typeFirstName, 200);
+        } else {
+          // First name typing complete, hide cursor and start last name
+          setTimeout(() => {
+            firstNameCursor.style.display = 'none';
+            secondLine.style.opacity = '1';
+            typeLastName();
+          }, 500);
+        }
+      }
+      
+      // Step 2: Type last name
+      const lastName = 'NAME';
+      let j = 0;
+      
+      function typeLastName() {
+        if (j < lastName.length) {
+          lastNameText.textContent += lastName.charAt(j);
+          j++;
+          setTimeout(typeLastName, 200);
+        } else {
+          // Last name typing complete, show subtitle
+          setTimeout(() => {
+            subtitle.style.animation = 'slideInUp 0.8s ease-out forwards';
+          }, 1000);
+        }
+      }
+      
+      // Start typing first name after delay
+      setTimeout(typeFirstName, 500);
+    });
+  </script>
+</div>

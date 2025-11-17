@@ -1,0 +1,165 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title = "Your Name | Professional Title",
+  description = "Your professional tagline. Describe your skills and what you build in one concise sentence.",
+  image = "/og-image.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/Favicon5.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" />
+    
+    <!-- Critical CSS -->
+    <style>
+      /* Critical styles for above-the-fold content */
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  
+  <body class="bg-neutral-900 text-gray-100 transition-colors duration-300">
+    <!-- Enhanced Floating Navigation -->
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 sm:top-6 sm:right-6 sm:left-auto sm:transform-none">
+      <div class="flex items-center gap-1 px-3 py-2 bg-black/20 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
+        <a href="/" class="nav-link group" data-text="Home">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span class="hidden lg:inline">Home</span>
+        </a>
+        <a href="/projects" class="nav-link group" data-text="Projects">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+          </svg>
+          <span class="hidden lg:inline">Projects</span>
+        </a>
+        <a href="/blog" class="nav-link group" data-text="Blog">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+          <span class="hidden lg:inline">Blog</span>
+        </a>
+        <a href="/contact" class="nav-link group" data-text="Contact">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <span class="hidden lg:inline">Contact</span>
+        </a>
+        <div class="ml-2 pl-2 border-l border-white/20">
+    <a href="/your-resume.pdf" download class="resume-btn" title="Download Resume">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <span class="hidden xl:inline">Resume</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <slot />
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set a beautiful professional background
+        document.body.style.setProperty(
+          'background', 
+          'radial-gradient(ellipse at top, #1e1b4b 0%, #312e81 25%, #1e1b69 50%, #0f0f23 75%, #000 100%)',
+          'important'
+        );
+        document.body.style.setProperty('background-attachment', 'fixed', 'important');
+
+        // Initialize AOS if available
+        if (typeof AOS !== 'undefined') {
+          AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+          });
+        }
+
+        // Handle active navigation state
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPath || (currentPath.startsWith('/blog') && href === '/blog')) {
+            link.classList.add('active');
+          }
+        });
+
+        // Add scroll effect to navbar with optimized performance
+        let lastScrollY = window.scrollY;
+        const navbar = document.querySelector('nav');
+        let ticking = false;
+        
+        const updateNavbar = () => {
+          const currentScrollY = window.scrollY;
+          
+          if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling down
+            navbar.style.transform = navbar.style.transform.includes('translate') 
+              ? navbar.style.transform.replace(/translateY\([^)]*\)/, 'translateY(-100%)')
+              : navbar.style.transform + ' translateY(-100%)';
+          } else {
+            // Scrolling up
+            navbar.style.transform = navbar.style.transform.replace(/translateY\([^)]*\)/, 'translateY(0)');
+          }
+          
+          lastScrollY = currentScrollY;
+          ticking = false;
+        };
+        
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            window.requestAnimationFrame(updateNavbar);
+            ticking = true;
+          }
+        }, { passive: true });
+      });
+    </script>
+  </body>
+</html>

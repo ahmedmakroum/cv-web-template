@@ -1,0 +1,21 @@
+---
+import { getEntryBySlug, getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { slug: project.slug } }));
+}
+
+const { slug } = Astro.params;
+const project = await getEntryBySlug('projects', slug) as CollectionEntry<'projects'>;
+if (!project) throw new Error(`Project not found: ${slug}`);
+const { Content } = await project.render();
+---
+
+<Layout title={`${project.data.title} | Projects`} description={project.data.description}>
+  <article class="prose dark:prose-invert mx-auto py-12">
+    <h1>{project.data.title}</h1>
+    <Content />
+  </article>
+</Layout>
