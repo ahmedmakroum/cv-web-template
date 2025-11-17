@@ -3,13 +3,16 @@
 
 A stunning, fully customizable portfolio and resume website built with Astro, Tailwind CSS, and modern web technologies. Perfect for developers, designers, data engineers, and professionals looking to showcase their work online.
 
-![Demo](./image.png)
+![Demo](https://raw.githubusercontent.com/ahmedmakroum/cv-web-template/main/public/image.png)
 
-> **Note:** Add your own demo.gif or screenshot.png to the `/public` folder to showcase your customized version
 
-![Astro](https://img.shields.io/badge/Astro-5.2.5-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+[![Astro](https://img.shields.io/badge/Astro-5.14.1-FF5D01?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
+
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+
+
 
 ## Features
 
