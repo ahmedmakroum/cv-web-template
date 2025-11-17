@@ -77,12 +77,8 @@ Update these files with your information:
 
 ### 2. Projects
 
-Projects are stored in `src/content/projects/` as Markdown files.
+Projects are stored in `src/content/projects/` as Markdown files
 
-**Remove example projects:**
-```sh
-rm src/content/projects/*.md
-```
 
 **Create your own projects:**
 
@@ -114,11 +110,6 @@ rm src/content/blog/*.md
 
 ### 4. Assets
 
-**Remove personal images:**
-```sh
-cd public
-rm *.png *.jpg *.pdf
-```
 
 **Add your own:**
 - Profile photo
