@@ -1,13 +1,17 @@
 ````markdown
-# 🌟 Modern Portfolio & Resume Template
+# Modern Portfolio & Resume Template
 
 A stunning, fully customizable portfolio and resume website built with Astro, Tailwind CSS, and modern web technologies. Perfect for developers, designers, data engineers, and professionals looking to showcase their work online.
+
+![Demo](./public/image.png)
+
+> **Note:** Add your own demo.gif or screenshot.png to the `/public` folder to showcase your customized version
 
 ![Astro](https://img.shields.io/badge/Astro-5.2.5-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-## ✨ Features
+## Features
 
 - **Modern Design**: Sleek, professional design with glassmorphism effects and smooth animations
 - **Fully Responsive**: Perfect display on desktop, tablet, and mobile devices
@@ -19,7 +23,7 @@ A stunning, fully customizable portfolio and resume website built with Astro, Ta
 - **Fast Performance**: Built with Astro for optimal loading speeds
 - **Easy Customization**: Simple to personalize with your own information
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -44,7 +48,7 @@ npm run dev
 
 Visit `http://localhost:4321` to see your site!
 
-## 📝 Customization Guide
+## Customization Guide
 
 ### 1. Personal Information
 
@@ -124,7 +128,7 @@ rm *.png *.jpg *.pdf
 
 Update `src/layouts/Layout.astro` with your default SEO information.
 
-##  Commands
+## Commands
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -139,7 +143,7 @@ This template uses Tailwind CSS for styling. Customize colors, fonts, and more i
 - `tailwind.config.js`
 - `src/styles/global.css`
 
-##  Deployment
+## Deployment
 
 This template can be deployed to various platforms:
 
@@ -158,7 +162,7 @@ npm run build
 ### GitHub Pages
 See [Astro's deployment guide](https://docs.astro.build/en/guides/deploy/)
 
-##  Tech Stack
+## Tech Stack
 
 - **Framework**: [Astro](https://astro.build)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
@@ -166,19 +170,21 @@ See [Astro's deployment guide](https://docs.astro.build/en/guides/deploy/)
 - **Animations**: CSS animations + AOS (Animate On Scroll)
 - **Forms**: [FormSubmit](https://formsubmit.co)
 
-## 📄 License
+## License
 
-This template is open source and free to use for personal and commercial projects.
+This template is open source and free to use for personal and commercial projects under the MIT License.
 
-##  Contributing
+## Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-##  Support
+## Support
 
-If you found this template helpful, please give it a ⭐️!
+If you found this template helpful, please give it a star on GitHub!
 
 ---
+
+**Built with Astro**
 
 
 ````
