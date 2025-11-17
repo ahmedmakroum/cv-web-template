@@ -1,4 +1,3 @@
-````markdown
 # Modern Portfolio & Resume Template
 
 A stunning, fully customizable portfolio and resume website built with Astro, Tailwind CSS, and modern web technologies. Perfect for developers, designers, data engineers, and professionals looking to showcase their work online.
