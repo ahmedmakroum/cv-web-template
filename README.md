@@ -3,7 +3,7 @@
 
 A stunning, fully customizable portfolio and resume website built with Astro, Tailwind CSS, and modern web technologies. Perfect for developers, designers, data engineers, and professionals looking to showcase their work online.
 
-![Demo](./public/image.png)
+![Demo](./image.png)
 
 > **Note:** Add your own demo.gif or screenshot.png to the `/public` folder to showcase your customized version
 
